@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using Mirror;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager : NetworkBehaviour
 {
     public PlayerHealth playerHealth;
     public GameObject enemy;
@@ -8,15 +9,21 @@ public class EnemyManager : MonoBehaviour
     public Transform[] spawnPoints;
 
 
-    void Start ()
+    void Update ()
     {
-        InvokeRepeating ("Spawn", spawnTime, spawnTime);
+        if (playerHealth == null)
+        {
+            playerHealth = FindObjectOfType<PlayerHealth>();
+            InvokeRepeating("Spawn", spawnTime, spawnTime);
+        }
+
+        
     }
 
 
     void Spawn ()
     {
-        if(playerHealth.currentHealth <= 0f)
+        if (playerHealth.currentHealth <= 0f)
         {
             return;
         }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using Mirror;
 
-public class GameOverManager : MonoBehaviour
+public class GameOverManager : NetworkBehaviour
 {
     public PlayerHealth playerHealth;
 	public float restartDelay = 5f;
@@ -18,15 +19,21 @@ public class GameOverManager : MonoBehaviour
 
     void Update()
     {
-        if (playerHealth.currentHealth <= 0)
+        if(playerHealth = null)
         {
-            anim.SetTrigger("GameOver");
+            playerHealth = FindObjectOfType<PlayerHealth>();
+            if (playerHealth.currentHealth <= 0)
+            {
+                anim.SetTrigger("GameOver");
 
-			restartTimer += Time.deltaTime;
+                restartTimer += Time.deltaTime;
 
-			if (restartTimer >= restartDelay) {
-				Application.LoadLevel(Application.loadedLevel);
-			}
+                if (restartTimer >= restartDelay)
+                {
+                    Application.LoadLevel(Application.loadedLevel);
+                }
+            }
         }
+        
     }
 }

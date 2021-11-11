@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Mirror;
 
-public class EnemyAttack : MonoBehaviour
+public class EnemyAttack : NetworkBehaviour
 {
     public float timeBetweenAttacks = 0.5f;
     public int attackDamage = 10;

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Mirror;
 
 public class PlayerShooting : MonoBehaviour
 {
