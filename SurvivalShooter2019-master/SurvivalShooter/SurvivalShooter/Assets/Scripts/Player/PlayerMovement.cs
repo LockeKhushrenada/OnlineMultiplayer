@@ -20,6 +20,11 @@ public class PlayerMovement : NetworkBehaviour
 
 	void FixedUpdate()
 	{
+		if(!isLocalPlayer)
+        {
+			return;
+        }
+
 		float h = Input.GetAxisRaw("Horizontal");
 		float v = Input.GetAxisRaw("Vertical");
 

@@ -4,7 +4,9 @@ using Mirror;
 public class EnemyManager : NetworkBehaviour
 {
     public PlayerHealth playerHealth;
+    [SyncVar]
     public GameObject enemy;
+    [SyncVar]
     public float spawnTime = 3f;
     public Transform[] spawnPoints;
 
@@ -20,7 +22,7 @@ public class EnemyManager : NetworkBehaviour
         
     }
 
-
+ 
     void Spawn ()
     {
         if (playerHealth.currentHealth <= 0f)

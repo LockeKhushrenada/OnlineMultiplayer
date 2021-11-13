@@ -24,8 +24,6 @@ public class CameraFollow : MonoBehaviour
 			{
 				target = FindObjectOfType<PlayerHealth>().transform;
 				offset = transform.position - target.position;
-				//Vector3 targetCamPos = target.position + offset;
-				//transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
 			}
 			Vector3 targetCamPos = target.position + offset;
 			transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
